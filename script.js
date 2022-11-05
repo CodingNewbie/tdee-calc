@@ -10,7 +10,6 @@ calculateBtn.addEventListener("click", () => {
   // BMI Calculator
   const calculateBMI = (height, width) => width / (height / 100) ** 2;
   const BMI = calculateBMI(178, 86).toFixed(2);
-  // TODO: Change according to the real data
   console.log(`BMI: ${BMI}`);
 
   // BMR Calculator
@@ -21,6 +20,26 @@ calculateBtn.addEventListener("click", () => {
       return Math.round(655.1 + 9.563 * weight + 1.85 * height - 4.676 * age);
     }
   };
-  // TODO: Change according to the real data
   console.log(`BMR: ${calculateBMR("male", 86, 178, 26)}`);
+
+  // TDEE Calculator
+  const calculateTDEE = (BMR, activity) => {
+    switch (activity) {
+      case "sedentary":
+        return BMR * 1.2;
+      case "lightlyActive":
+        return BMR * 1.375;
+      case "moderatelyActive":
+        return BMR * 1.55;
+      case "veryActive":
+        return BMR * 1.725;
+      case "extremelyActive":
+        return BMR * 1.9;
+    }
+  };
+  console.log(
+    `TDEE: ${Math.round(
+      calculateTDEE(calculateBMR("male", 86, 178, 26), "lightlyActive")
+    )}`
+  );
 });
