@@ -37,9 +37,19 @@ calculateBtn.addEventListener("click", () => {
         return BMR * 1.9;
     }
   };
-  console.log(
-    `TDEE: ${Math.round(
-      calculateTDEE(calculateBMR("male", 86, 178, 26), "lightlyActive")
-    )}`
+  const TDEE = Math.round(
+    calculateTDEE(calculateBMR("male", 86, 178, 26), "lightlyActive")
   );
+  console.log(`TDEE: ${TDEE}`);
+
+  // Surplus and deficit calories calculation
+  const calculateSurDefCalories = (amount, TDEE) => {
+    amount = amount / 100;
+    return TDEE * amount;
+  };
+  const surDefCalories = `Sur/Def calories: ${calculateSurDefCalories(
+    25,
+    TDEE
+  ).toFixed(0)}`;
+  console.log(surDefCalories);
 });
